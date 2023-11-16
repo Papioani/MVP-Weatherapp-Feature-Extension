@@ -85,12 +85,16 @@ export default function Weather() {
           <p>Today's Low:</p>
           <b>{weatherData.main.temp_min} °C</b>
           
-          <button type="button" onClick={addBookmark}>
+        <div className="bookmark-btn">
+        
+        <button type="button" onClick={addBookmark}>
           Bookmark
         </button>
         </div>
+        
+        </div>
       )}
-
+      
       <div className="bookmarks">
         <h2>Bookmarks</h2>
         <ul>
