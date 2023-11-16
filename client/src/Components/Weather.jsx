@@ -99,6 +99,7 @@ export default function Weather() {
         <h2>Bookmarks</h2>
         <ul>
           {bookmarks.map((bookmark, index) => (
+            
             <li key={index} onClick={() => loadBookmark(bookmark)}>
               {bookmark.name}, {bookmark.sys.country}
             </li>
