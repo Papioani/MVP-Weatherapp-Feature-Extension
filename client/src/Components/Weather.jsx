@@ -34,11 +34,36 @@ export default function Weather() {
     }
   };
 
-  const addBookmark = () => {
+  /* const addBookmark = () => {
     if (weatherData) {
       setBookmarks([...bookmarks, weatherData]);
     }
+  }  */
+
+   const addBmrk = async () => {
+    //send a post fetch request to the server
+    let options = {
+      method: "Post",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(weatherData.name)
+    }
+    try{
+      let response = await fetch("/api/bookmarks", options);
+      if(response.ok){
+        //update list of bookmarks 
+        let data = await response.json();
+        //only change the state when the response is received
+        setBookmarks(data);
+      }
+      else{
+        console.log(`Server Error: ${response.status} ${response.statusText}`);
+      }
+    }
+    catch(err){
+      console.log("Network Error", err);
+    }
   };
+   
 
   const loadBookmark = (bookmark) => {
     setWeatherData(bookmark);
@@ -58,7 +83,7 @@ export default function Weather() {
           placeholder="Enter location"
           value={location}
           onChange={handleChange}
-        /><button type="submit">Get Weather</button>
+        /><button type="submit">Get Weather</button>    {/* If your form contains only one input field and you press Enter while focused on that input field, the form will naturally submit without explicitly requiring a visible submit button. This is a default behavior of HTML forms when they contain input fields and the Enter key is pressed. */}
         
       </form>
 
@@ -87,7 +112,10 @@ export default function Weather() {
           
         <div className="bookmark-btn">
         
-        <button type="button" onClick={addBookmark}>
+        <button type="button"  onClick={() => {
+               /* addBookmark();  */ 
+               addBmrk();  
+  }}>
           Bookmark
         </button>
         </div>
@@ -108,4 +136,7 @@ export default function Weather() {
       </div>
     </div>
   );
-}
+          }
+
+
+

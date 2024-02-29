@@ -8,3 +8,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+/* Wrapping the app or components in <React.StrictMode> does not provide routing functionality as BrowserRouter does. 
+It helps catch and highlight certain types of bugs or issues to improve the quality of your application. */

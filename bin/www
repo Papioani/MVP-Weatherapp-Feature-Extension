@@ -6,13 +6,14 @@
 
 var app = require('../app');
 var debug = require('debug')('my-express-app:server');
-var http = require('http');
+var http = require('http');     /* this entire code in this www file is a Node.js script that sets up an HTTP server using the Express.js framework.  */
 
+/* ESTE ES BACKEND!!!!!!!!!!!!!! */
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '5000');
+var port = normalizePort(process.env.PORT || '4000');   /* part of the server-side (backend) configuration, specifically related to the port on which the server will listen for incoming requests */ 
 app.set('port', port);
 
 /**
