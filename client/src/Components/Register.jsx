@@ -9,25 +9,29 @@ function Register() {
 
   const [data, setData] = useState(null);
 
-  const { username, password } = credentials;  /* Destructuring assignment */
+  const { username, password } = credentials; /* Destructuring assignment */
 
   const handleChange = (e) => {
-    const { name, value } = e.target; /*  e.target represents the DOM element that triggered the event (for example, an input field). */
-    setCredentials({ ...credentials, [name]: value });  /* name represents the name attribute, value represents the value that the user has entered. lines 46 & 48 */
+    const { name, value } =
+      e.target; /*  e.target represents the DOM element that triggered the event (for example, an input field). */
+    setCredentials({
+      ...credentials,
+      [name]: value,
+    }); /* name represents the name attribute, value represents the value that the user has entered. lines 46 & 48 */
   };
 
   const register = async () => {
     try {
-      const { response} = await axios("/api/auth/register", {
+      const { data } = await axios.post("/api/auth/register", credentials);
+      /* const { response } = await axios("/api/auth/register", {
         method: "POST",
-        data: credentials,  // with fetch we have the json that we need to stringify etc, here we just have the data , and the rest is under the hood
-      });
-      console.log(response.data.message);
+        data: credentials, */ // with fetch we have the json that we need to stringify etc, here we just have the data , and the rest is under the hood
+      console.log(data.message);
     } catch (error) {
       console.log(error);
-    } return "Welcome!";
+    }
+    return "Welcome!";
   };
-
 
   return (
     <div>
@@ -52,7 +56,6 @@ function Register() {
           </button>
         </div>
       </div>
-      
 
       {data && (
         <div className="text-center p-4">
