@@ -32,6 +32,7 @@ function Login() {
       localStorage.setItem("token", data.token); // setItem is the way to store the token in the localstorage. This is in the browser, dont need library or anything
       console.log(data.message, data.token);
       window.alert("You logged in!");
+      setCredentials({ username: "", password: "" });
       setData(true);
     } catch (error) {
       console.log(error);

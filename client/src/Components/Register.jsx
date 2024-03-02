@@ -9,15 +9,15 @@ function Register() {
 
   const [data, setData] = useState(null);
 
-  const { username, password } = credentials; /* Destructuring assignment */
+  const { username, password } = credentials; /* Destructuring assignment */ // In this specific code not used directly
 
   const handleChange = (e) => {
     const { name, value } =
       e.target; /*  e.target represents the DOM element that triggered the event (for example, an input field). */
     setCredentials({
       ...credentials,
-      [name]: value,
-    }); /* name represents the name attribute, value represents the value that the user has entered. lines 46 & 48 */
+      [name]: value, // in brackets, [name], because it is being used as a computed property name, pattern in React when updating state dynamically based on user input
+    }); /* name represents the name attribute (line 42), value represents the value that the user has entered. lines 46 & 48 */
   };
 
   const register = async () => {
@@ -27,6 +27,7 @@ function Register() {
         method: "POST",
         data: credentials, */ // with fetch we have the json that we need to stringify etc, here we just have the data , and the rest is under the hood
       console.log(data.message);
+      setCredentials({ username: "", password: "" });
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +38,7 @@ function Register() {
     <div>
       <div>
         <input
-          value={username}
+          value={username} // refer to the state variables username and password, respectively, from the credentials object
           onChange={handleChange}
           name="username"
           type="text"
