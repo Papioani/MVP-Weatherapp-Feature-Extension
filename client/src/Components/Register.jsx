@@ -34,6 +34,8 @@ function Register() {
     return "Welcome!";
   };
 
+  // console.log(data);
+
   return (
     <div>
       <div>

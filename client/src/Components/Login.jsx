@@ -3,8 +3,8 @@ import axios from "axios"; // axios is a library , cleaner and simpler to the fe
 
 function Login() {
   const [credentials, setCredentials] = useState({
-    username: "test",
-    password: "test",
+    username: "",
+    password: "",
   });
 
   const [data, setData] = useState(null);
@@ -93,11 +93,11 @@ function Login() {
           )}
         </div>
       </div>
-      <div className="text-center p-4">
+      {/* <div className="text-center p-4">
         <button className=" btn btn-outline-primary" onClick={requestData}>
           Request protected data
         </button>
-      </div>
+      </div> */}
 
       {data && (
         <div className="text-center p-4">
